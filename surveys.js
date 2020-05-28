@@ -98,6 +98,9 @@ for (let index = 0; index < 40; index++) {
   // Push the completed survey oject into the main survey container
   surveyArray.push(surveyObj);
   // console.log(JSON.stringify(surveyObj));
+
+  // ** NOTE: Use this code below for new line delimited Elastic search JSON.
+  // Else use the code outside of the loop for writing a well formed JSON file
   let document = JSON.stringify(surveyObj) + '\n';
   try {
     fs.appendFileSync('out/surveysDelimited.json', document)
