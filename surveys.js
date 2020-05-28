@@ -97,14 +97,21 @@ for (let index = 0; index < 40; index++) {
   }
   // Push the completed survey oject into the main survey container
   surveyArray.push(surveyObj);
+  // console.log(JSON.stringify(surveyObj));
+  let document = JSON.stringify(surveyObj) + '\n';
+  try {
+    fs.appendFileSync('out/surveysDelimited.json', document)
+  } catch (error) {
+    console.log(error);
+  }
 } // end of survey generation loop
 
 // Write the JSON to disk
-let surveyList = JSON.stringify(surveyArray);
+/* let surveyList = JSON.stringify(surveyArray);
 fs.open("out/surveys.json", "w", function(err, fd) {
   if (err) throw err;
   fs.write(fd, surveyList, err => {
     if (err) throw err;
     console.log("The surveys have been created => out/surveys.json");
   });
-});
+}); */
